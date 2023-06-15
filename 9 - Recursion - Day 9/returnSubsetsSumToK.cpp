@@ -1,26 +1,20 @@
 
-void solve(vector<int> &arr,vector<vector<int>> &ans, int ind, int n, vector<int>&temp, int k, int sm){
+  void solve(int i,int sum,int k,vector<int> &num,vector<vector<int>> &ans,vector<int> &temp){
+    if(i==num.size()){
+        if(sum==k)ans.push_back(temp);
+          return ;
+      }
 
-  if (sm == k) {
-    sort(temp.begin(), temp.end());
-    ans.push_back(temp);
-  }
-    for(int i=ind; i<n; i++){
-        if(i != ind && arr[i] == arr[i-1]) continue;
-        temp.push_back(arr[i]);
-        solve(arr,ans,i+1,n,temp,k,sm+arr[i]);
-        temp.pop_back();
+    solve(i+1,sum,k,num,ans,temp);
+    temp.push_back(num[i]);
+    solve(i+1,sum+num[i],k,num,ans,temp);
+    temp.pop_back();
     }
-}
 
-
-vector<vector<int>> findSubsetsThatSumToK(vector<int> arr, int n, int k)
-{
-    // Write your code here.
-        // Write your code here.
+ 
+  vector<vector<int>> findSubsetsThatSumToK(vector<int> arr, int n, int k){
     vector<vector<int>> ans;
-    vector<int>temp;
-    // sort(arr.begin(), arr.end());
-    solve(arr,ans,0,n,temp,k, 0);
+    vector<int> temp;
+    solve(0,0,k,arr,ans,temp);
     return ans;
-}
+  }
