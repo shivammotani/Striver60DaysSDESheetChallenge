@@ -1,14 +1,18 @@
 {
-        "files.associations": {
-                "vector": "cpp",
-                "array": "cpp",
-                "bitset": "cpp",
-                "string_view": "cpp",
-                "initializer_list": "cpp",
-                "ranges": "cpp",
-                "span": "cpp",
-                "regex": "cpp",
-                "utility": "cpp",
-                "valarray": "cpp"
-        }
+  "files.associations": {
+    "vector": "cpp",
+    "array": "cpp",
+    "bitset": "cpp",
+    "string_view": "cpp",
+    "initializer_list": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "regex": "cpp",
+    "utility": "cpp",
+    "valarray": "cpp",
+    "string": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp"
+  }
 }
