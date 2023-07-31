@@ -1,45 +1,45 @@
 #include <bits/stdc++.h>
 
-int solve(priority_queue<int> &small, priority_queue<int, vector<int>, greater<int>> &large, int num)
+int solve(priority_queue<int> &smallerOnLeft, priority_queue<int, vector<int>, greater<int>> &largestOnRight, int num)
 {
 
-        if (small.size() == 0)
-                small.push(num);
-        else if (small.size() > large.size())
+        if (smallerOnLeft.size() == 0)
+                smallerOnLeft.push(num);
+        else if (smallerOnLeft.size() > largestOnRight.size())
         {
-                if (num < small.top())
+                if (num < smallerOnLeft.top())
                 {
-                        large.push(small.top());
-                        small.pop();
-                        small.push(num);
+                        largestOnRight.push(smallerOnLeft.top());
+                        smallerOnLeft.pop();
+                        smallerOnLeft.push(num);
                 }
                 else
-                        large.push(num);
+                        largestOnRight.push(num);
         }
         else
         {
-                if (num < small.top())
+                if (num < smallerOnLeft.top())
                 {
-                        small.push(num);
+                        smallerOnLeft.push(num);
                 }
                 else
                 {
-                        large.push(num);
-                        small.push(large.top());
-                        large.pop();
+                        largestOnRight.push(num);
+                        smallerOnLeft.push(largestOnRight.top());
+                        largestOnRight.pop();
                 }
         }
 
-        if (small.size() == large.size())
-                return (small.top() + large.top()) / 2;
-        return small.top();
+        if (smallerOnLeft.size() == largestOnRight.size())
+                return (smallerOnLeft.top() + largestOnRight.top()) / 2;
+        return smallerOnLeft.top();
 }
 
 void findMedian(int *arr, int n)
 {
         // Write your code here
-        priority_queue<int> small;
-        priority_queue<int, vector<int>, greater<int>> large;
+        priority_queue<int> smallerOnLeft;
+        priority_queue<int, vector<int>, greater<int>> largestOnRight;
         for (int i = 0; i < n; i++)
-                cout << solve(small, large, arr[i]) << " ";
+                cout << solve(smallerOnLeft, largestOnRight, arr[i]) << " ";
 }
