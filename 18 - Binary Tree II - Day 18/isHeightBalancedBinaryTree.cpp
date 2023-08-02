@@ -35,7 +35,7 @@ bool isBalancedBT(BinaryTreeNode<int> *root)
 {
         // Write your code here.
         if (root == NULL)
-                return 0;
+                return true;
         int ans = dfs(root);
         if (ans == -1)
                 return false;
